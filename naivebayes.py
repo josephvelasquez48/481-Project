@@ -66,6 +66,9 @@ data = pd.read_excel("LargeDataSet.xlsx", sheet_name="emails")
 emails = data['email'].values  
 labels = data['label'].values
 
+#convert ham and spam to 0 and 1
+label_number =np.where(labels == 'spam', 1, 0)
+
 #vectorize the email text
 vectorizer = CountVectorizer()
 x = vectorizer.fit_transform(emails).toarray()
